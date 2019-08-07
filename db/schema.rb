@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_08_07_113205) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -34,8 +36,6 @@ ActiveRecord::Schema.define(version: 2019_08_07_113205) do
     t.decimal "sub_total", precision: 15, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_id", null: false
-    t.index ["order_id"], name: "index_orders_on_order_id"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_113205) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "orders", "orders"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
   add_foreign_key "product_variants", "products"

@@ -10,32 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_113205) do
+ActiveRecord::Schema.define(version: 2019_08_07_234935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title", limit: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_categories_on_title", unique: true
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "quantity", default: 0, null: false
-    t.decimal "price"
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", null: false
+    t.decimal "price", precision: 15, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_id", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.string "first_name"
-    t.string "last_name", null: false
-    t.decimal "sub_total", precision: 15, scale: 2
+    t.string "last_name"
+    t.decimal "sub_total", precision: 15, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -48,24 +52,26 @@ ActiveRecord::Schema.define(version: 2019_08_07_113205) do
   end
 
   create_table "product_variants", force: :cascade do |t|
-    t.string "title", null: false
-    t.decimal "price", precision: 15, scale: 2
+    t.bigint "product_id", null: false
+    t.string "title", limit: 100, null: false
+    t.decimal "price", precision: 15, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_id", null: false
     t.index ["product_id"], name: "index_product_variants_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title", limit: 150, null: false
+    t.decimal "price", precision: 15, scale: 2, default: "0.0", null: false
     t.text "description"
-    t.decimal "price", precision: 15, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_products_on_title", unique: true
   end
 
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "product_categories", "categories"
-  add_foreign_key "product_categories", "products"
-  add_foreign_key "product_variants", "products"
+  add_foreign_key "order_items", "orders", name: "fk_order_items_to_order"
+  add_foreign_key "order_items", "products", name: "fk_order_items_to_product"
+  add_foreign_key "product_categories", "categories", name: "fk_product_categories_to_categories"
+  add_foreign_key "product_categories", "products", name: "fk_product_categories_to_products"
+  add_foreign_key "product_variants", "products", name: "fk_product_variants_to_product"
 end

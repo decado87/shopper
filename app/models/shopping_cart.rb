@@ -22,7 +22,8 @@ class ShoppingCart
     )
 
     order_item.price = product.price
-    order_item.quantity = quantity
+    order_item.quantity = 0 if order_item.quantity.nil?
+    order_item.quantity += quantity.to_i
 
     order_item.save
   end

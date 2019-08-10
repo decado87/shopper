@@ -14,12 +14,6 @@
         <%= number_field_tag :quantity, 1 %>
         <%= submit_tag "Add to Cart" %>
       <% end %>
-
-      <ul>
-        <% product.variants.each do |variant| %>
-          <li><%= variant.title %> (<%= number_to_currency variant.price %>)</li>
-        <% end %>
-      </ul>
     </li>
   <% end %>
 </ol>

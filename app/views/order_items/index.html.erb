@@ -14,10 +14,28 @@
     <tr>
       <td><%= item.product.title %></td>
       <td><%= number_to_currency item.price %></td>
+      <td>
+        <%= form_tag order_items_path do  %>
+          <%= hidden_field_tag :product_id, item.product.id %>
+          <%= hidden_field_tag :quantity, 1 %>
+          <%= submit_tag "+" %>
+        <% end %>
+      </td>
+
+<!--      <td><%#= number_field_tag :quantity, item.quantity %></td>-->
       <td><%= item.quantity %></td>
+
+      <td>
+        <%= form_tag order_items_path do  %>
+          <%= hidden_field_tag :product_id, item.product.id %>
+          <%= hidden_field_tag :quantity, -1 %>
+          <%= submit_tag "-" %>
+        <% end %>
+      </td>
+
       <td>
         <%= form_for item, method: :delete do |f| %>
-          <%= f.submit "Remove" %>
+          <%= f.submit "Remove whole product" %>
         <% end %>
       </td>
     </tr>

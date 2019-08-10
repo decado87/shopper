@@ -2,16 +2,27 @@ class OrderItemsController < ApplicationController
 
   def index
     @items = current_cart.order.items
+    @items = @items.sort_by{|item| item.product.title.downcase}
   end
 
 
   def create
+    product = Product.find(params[:product_id])
+    quantity = params[:quantity]
     current_cart.add_item(
-        product_id: params[:product_id],
-        quantity: params[:quantity]
+        product_id: product.id,
+        quantity: quantity
     )
-
-    redirect_to cart_path
+    case quantity.to_i
+    when -1
+      msg = "removed 1 product"
+    when 1
+      msg = "added 1 product"
+    else
+      msg = "added #{quantity} products"
+    end
+    flash[:success] = "You have  #{msg} named - #{product.title}."
+    redirect_to request.referrer
   end
 
   def destroy

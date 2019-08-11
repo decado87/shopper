@@ -17,4 +17,7 @@ Rails.application.routes.draw do
 
   get '/order/:id', to: 'orders#order', as: :order
   resources :orders, only: [:index]
+
+  post 'order/find_order', to: 'orders#redirect_order', as: :redirect_order
+
 end

@@ -18,9 +18,13 @@ class OrdersController < ApplicationController
   def find
   end
 
+  def redirect_order
+    parameters = params.permit(params.keys).to_h
+    redirect_to order_path(parameters[:id])
+  end
+
   def order
-    id = params[:id].to_i
-    @order = Order.find(id)
+    @order = Order.find(params[:id])
   end
 
   private

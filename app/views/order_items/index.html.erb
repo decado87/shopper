@@ -15,18 +15,18 @@
       <td><%= item.product.title %></td>
       <td><%= number_to_currency item.price %></td>
       <td>
-        <%= form_tag order_items_path do  %>
+        <%= form_tag order_items_path do %>
           <%= hidden_field_tag :product_id, item.product.id %>
           <%= hidden_field_tag :quantity, 1 %>
           <%= submit_tag "+" %>
         <% end %>
       </td>
 
-<!--      <td><%#= number_field_tag :quantity, item.quantity %></td>-->
+      <!--      <td><%#= number_field_tag :quantity, item.quantity %></td>-->
       <td><%= item.quantity %></td>
 
       <td>
-        <%= form_tag order_items_path do  %>
+        <%= form_tag order_items_path do %>
           <%= hidden_field_tag :product_id, item.product.id %>
           <%= hidden_field_tag :quantity, -1 %>
           <%= submit_tag "-" %>
@@ -41,4 +41,17 @@
     </tr>
   <% end %>
   </tbody>
+
+  <tfoot>
+  <tr>
+
+    <td colespan="4" align="left">
+      <b>Total -
+        <%= number_to_currency current_cart.sub_total %>
+      </b>
+    </td>
+  </tr>
+  </tfoot>
 </table>
+
+<%= link_to 'Checkout', checkout_path %>

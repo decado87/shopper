@@ -1,0 +1,9 @@
+<h2>Find order</h2>
+
+<%= form_tag order_path(:id), method: "get" do %>
+  <%= number_field_tag :id, 1 %>
+  <%= submit_tag "Find order" %>
+
+<% end %>
+
+

@@ -1,0 +1,33 @@
+<h2> Order number - <%= @order.id %></h2>
+
+<table>
+  <thead>
+  <tr>
+    <td>Product</td>
+    <td>Price</td>
+    <td>Quantity</td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @order.items.each do |item| %>
+    <tr>
+      <td><%= item.product.title %></td>
+      <td><%= number_to_currency item.price %></td>
+      <td><%= item.quantity %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+
+  <tfoot>
+  <tr>
+
+    <td colespan="4" align="left">
+      <b>Total -
+        <%= number_to_currency current_cart.sub_total %>
+      </b>
+    </td>
+  </tr>
+  </tfoot>
+</table>

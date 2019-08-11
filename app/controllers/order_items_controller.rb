@@ -21,7 +21,7 @@ class OrderItemsController < ApplicationController
     else
       msg = "added #{quantity} products"
     end
-    flash[:success] = "You have  #{msg} named - #{product.title}."
+    flash[:success] = "You have #{msg} named - #{product.title}."
     redirect_to request.referrer
   end
 

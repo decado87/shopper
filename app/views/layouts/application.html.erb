@@ -11,7 +11,8 @@
 <body>
 <p>
   <%= link_to "Home", root_path %> |
-  <%= link_to pluralize(current_cart.items_count, 'item'), cart_path %>
+  <%= link_to pluralize("Current cart: #{current_cart.items_count}", 'item'), cart_path %> |
+  <%= link_to 'Find order', find_path %>
 </p>
 
 <hr />

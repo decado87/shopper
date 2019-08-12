@@ -34,7 +34,7 @@
 
       <td>
         <%= form_for item, method: :delete do |f| %>
-          <%= f.submit "Remove whole product" %>
+          <%= f.submit "Remove product from cart" %>
         <% end %>
       </td>
     </tr>
@@ -45,7 +45,7 @@
   <tr>
 
     <td colespan="4" align="left">
-      <b>Total -
+      <b>Total:
         <%= number_to_currency current_cart.sub_total %>
       </b>
     </td>

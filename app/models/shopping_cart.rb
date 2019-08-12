@@ -26,6 +26,7 @@ class ShoppingCart
     order_item.price = product.price
     order_item.quantity = 0 if order_item.quantity.nil?
     order_item.quantity += quantity.to_i
+    order_item.quantity = 0 if quantity.to_i < 0
 
     ActiveRecord::Base.transaction do
       order_item.save

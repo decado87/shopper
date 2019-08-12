@@ -31,3 +31,7 @@
   </tr>
   </tfoot>
 </table>
+
+<%= form_for @order, method: :destroy do |f| %>
+  <%= f.submit "Delete order" %>
+<% end %>

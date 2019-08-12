@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get '/cart', to: 'order_items#index'
   resources :order_items, path: '/cart/items'
 
-  get '/cart/checkout', to: 'orders#new', as: :checkout
-  patch '/cart/checkout', to: 'orders#create'
+  # get '/cart/checkout', to: 'orders#new', as: :checkout
+  get '/cart/checkout', to: 'orders#create', as: :checkout
+  # patch '/cart/checkout', to: 'orders#create'
 
   get '/order/find', to: 'orders#find', as: :find
 

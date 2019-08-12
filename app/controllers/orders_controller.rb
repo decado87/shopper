@@ -7,9 +7,10 @@ class OrdersController < ApplicationController
   def create
     @order = current_cart.order
 
-    if @order.update_attributes(order_params.merge(status: 'open'))
+    if @order.update_attributes(status: 'open')
       session[:cart_token] = nil
       redirect_to root_path
+      flash[:success] = "Order with ID - #{@order.id} has been submited!"
     else
       render :new
     end
@@ -24,12 +25,16 @@ class OrdersController < ApplicationController
   end
 
   def order
-    @order = Order.find(params[:id])
+    begin
+      @order = Order.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:success] = "Order doesn't exist!"
+      redirect_to find_path
+    end
+    if !@order.nil? && @order.status == 'cart'
+      flash[:success] = "Order is not completed yet!"
+      redirect_to find_path
+    end
   end
 
-  private
-
-  def order_params
-    params.require(:order).permit(:first_name, :last_name)
-  end
 end

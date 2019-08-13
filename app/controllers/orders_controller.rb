@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     if @order.update_attributes(status: 'open')
       session[:cart_token] = nil
       redirect_to root_path
-      flash[:success] = "Order with ID - #{@order.id} has been submited!"
+      flash[:success] = "Order with ID - #{@order.id} has been submitted!"
     else
       render :new
     end
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
       redirect_to find_path
     end
     if !@order.nil? && @order.status == 'cart'
-      flash[:success] = "Order is not completed yet!"
+      flash[:success] = "Order is not complete yet!"
       redirect_to find_path
     end
   end

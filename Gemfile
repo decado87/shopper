@@ -41,6 +41,31 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-inline'
+  gem 'rack_session_access'
+  gem 'rspec-rails'
+  gem 'rspec-retry'
+  gem 'minitest'
+  gem 'database_cleaner'
+  gem 'sqlite3-ruby'
+  gem 'rest-client'
+  gem 'rubocop-airbnb', require: false
+  gem 'rubocop-checkstyle_formatter', require: false
+end
+
+group :test do
+  gem 'simplecov', require: false
+  gem 'simplecov-cobertura', require: false
+  gem 'factory_bot_rails', :require => false
+  gem 'ci_reporter_rspec'
+  gem 'ci_reporter_test_unit'
+  gem 'cucumber-rails', :require => false
+  gem 'xpath'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'roo'
 end
 
 group :development do

@@ -14,7 +14,6 @@ Capybara.server_port = 31337
 
 @@base_url = "http://127.0.0.1:#{Capybara.server_port}"
 
-
 Before do
   DatabaseCleaner.clean_with(:truncation)
   Capybara.default_max_wait_time = 3

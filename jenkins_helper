@@ -1,0 +1,4 @@
+#!/bin/bash
+docker-compose run -d test
+CONTAINER_ID=docker ps -qf "name=shopper_test"
+docker cp ${CONTAINER_ID}:/usr/src/myapp/report.html test-reports/reports.html

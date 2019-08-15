@@ -17,6 +17,6 @@ services:
 
   test:
     build: .
-    command: cucumber --format junit --out test-reports/
+    command: cucumber --format html --out test-reports/report.html --format pretty
     volumes:
       - .:/myapp

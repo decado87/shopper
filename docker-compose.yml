@@ -17,6 +17,6 @@ services:
 
   test:
     build: .
-    command: cucumber
+    command: cucumber --format json --out test-reports/
     volumes:
       - .:/myapp

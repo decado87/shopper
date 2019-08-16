@@ -19,7 +19,11 @@ services:
 
   test:
     build: .
+<<<<<<< HEAD
     command: sh -c "rake db:create db:schema:load db:seed && cucumber --format html --out report.html --format pretty"
+=======
+    command: sh -c "bundle exec rake db:test:clone_structure && cucumber --format html --out report.html --format pretty"
+>>>>>>> 6968fe1... change cucumber enviroment to test db
 
     volumes:
       - .:/myapp

@@ -87,3 +87,7 @@ production:
   database: shopper_production
   username: shopper
   password: <%= ENV['SHOPPER_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *default
+  database: shopper_test

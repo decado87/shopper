@@ -1,11 +1,13 @@
-version: '3'
+version: '3.7'
 services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - type: volume
+        source: shopper_development
+        target: /var/lib/postgresql/data
+
   web:
-    user: "${UID}:${GID}"
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
@@ -17,24 +19,11 @@ services:
 
   test:
     build: .
-<<<<<<< HEAD
-<<<<<<< HEAD
-    command: cucumber --format html --out test-reports/report.html --format pretty
-=======
-#    command: cucumber --format html --out report.html --format pretty
-    command: sh -c "cucumber --format html --out report.html --format pretty && pwd && ls"
-=======
     command: sh -c "rake db:create db:schema:load db:seed && cucumber --format html --out report.html --format pretty"
->>>>>>> fda1205... read me and clean up Gemfile
 
->>>>>>> bf138d8... test
     volumes:
-<<<<<<< HEAD
-      - .:/myapp
-=======
       - .:/myapp
 
 volumes:
   shopper_development:
     name: shopper_development
->>>>>>> 993b4b4... test

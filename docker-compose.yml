@@ -18,10 +18,14 @@ services:
   test:
     build: .
 <<<<<<< HEAD
+<<<<<<< HEAD
     command: cucumber --format html --out test-reports/report.html --format pretty
 =======
 #    command: cucumber --format html --out report.html --format pretty
     command: sh -c "cucumber --format html --out report.html --format pretty && pwd && ls"
+=======
+    command: sh -c "rake db:create db:schema:load db:seed && cucumber --format html --out report.html --format pretty"
+>>>>>>> fda1205... read me and clean up Gemfile
 
 >>>>>>> bf138d8... test
     volumes:

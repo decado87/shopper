@@ -24,16 +24,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'rubocop'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -47,20 +37,12 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'rspec-rails'
   gem 'rspec-retry'
-  gem 'minitest'
   gem 'database_cleaner'
-  gem 'sqlite3-ruby'
-  gem 'rest-client'
   gem 'rubocop-airbnb', require: false
   gem 'rubocop-checkstyle_formatter', require: false
 end
 
 group :test do
-  gem 'simplecov', require: false
-  gem 'simplecov-cobertura', require: false
-  gem 'factory_bot_rails', :require => false
-  gem 'ci_reporter_rspec'
-  gem 'ci_reporter_test_unit'
   gem 'cucumber-rails', :require => false
   gem 'xpath'
   gem 'selenium-webdriver'
@@ -75,7 +57,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker', '~> 1.8.5'
 end
 
 

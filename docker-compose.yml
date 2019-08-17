@@ -27,7 +27,7 @@ services:
 >>>>>>> 6968fe1... change cucumber enviroment to test db
 =======
     command: sh -c "bundle exec rake db:drop RAILS_ENV=test &&
-                    bundle exec rake db:create RAILS_ENV=test &&
+                    bundle exec rake db:create &&
                     bundle exec rake db:schema:load RAILS_ENV=test &&
                     bundle exec rake db:seed RAILS_ENV=test &&
                     cucumber --format html --out report.html --format pretty"

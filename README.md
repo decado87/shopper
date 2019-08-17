@@ -18,15 +18,15 @@ For Ubuntu users there is script for installation Docker:
 
 User is at application directory.
 ```cassandraql
-sudo docker-compose build
-sudo docker-compose up
-sudo docker-compose run web rake db:create db:schema:load db:seed
+sudo docker-compose build web db
+sudo docker-compose run -d web
 ```
 After build, application is running at: http://localhost:3000
 
 #### Running tests
 User is at application directory.
 ```cassandraql
+sudo docker-compose build test
 sudo docker-compose run test
 ```
 To get report file .html after tests:

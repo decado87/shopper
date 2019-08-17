@@ -25,3 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore shell scripts used in jenkins
+jenkins_build
+jenkins_helper
+jenkins_test

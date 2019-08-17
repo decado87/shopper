@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo docker system prune -f
+sudo docker-compose build test
+#sudo docker-compose up --no-start test
+sudo docker-compose run test
+sudo docker-compose run -d test
+container_id=$(sudo docker ps -qf "name=shopper_test" | head -1)
+cat /var/lib/jenkins/workspace/shopper/test-reports/report.html | sudo docker exec -i "$container_id" sh -c 'cat > /usr/src/myapp/report.html'

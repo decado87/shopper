@@ -26,7 +26,7 @@ After build, application is running at: http://localhost:3000
 #### Running tests
 User is at application directory.
 ```cassandraql
-sudo docker-compose build test
+sudo docker-compose build db test
 sudo docker-compose run test
 ```
 To get report file .html after tests:

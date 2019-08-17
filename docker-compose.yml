@@ -39,6 +39,7 @@ services:
     command: sh -c "bundle exec rake db:reset RAILS_ENV=test &&
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     bundle exec rake db:schema:load RAILS_ENV=test &&
                     bundle exec rake db:seed RAILS_ENV=test &&
 >>>>>>> 0c31ff1... db reset instead of drop and create
@@ -49,6 +50,9 @@ services:
 =======
                     cucumber --format html --out test-reports/report.html --format pretty"
 >>>>>>> f7279a5... added volume to test container
+=======
+                    cucumber --format html --out test_reports/report.html --format pretty"
+>>>>>>> 974d25a... added valid char
 
     volumes:
       - .:/myapp

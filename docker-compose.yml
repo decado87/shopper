@@ -22,6 +22,7 @@ services:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     command: sh -c "rake db:create db:schema:load db:seed && cucumber --format html --out report.html --format pretty"
 =======
     command: sh -c "bundle exec rake db:test:clone_structure && cucumber --format html --out report.html --format pretty"
@@ -34,6 +35,11 @@ services:
                     bundle exec rake db:create &&
                     bundle exec rake db:schema:load &&
                     bundle exec rake db:seed &&
+=======
+    command: sh -c "bundle exec rake db:reset RAILS_ENV=test &&
+                    bundle exec rake db:schema:load RAILS_ENV=test &&
+                    bundle exec rake db:seed RAILS_ENV=test &&
+>>>>>>> 0c31ff1... db reset instead of drop and create
                     cucumber --format html --out report.html --format pretty"
 >>>>>>> d050bee... setting test enviroment for cucumber tests
 

@@ -45,10 +45,7 @@ services:
 
     volumes:
       - .:/myapp
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+
 
 volumes:
   shopper_development:

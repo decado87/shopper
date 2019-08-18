@@ -27,14 +27,11 @@ After build, application is running at: http://localhost:3000
 User is at application directory.
 ```cassandraql
 sudo docker-compose build db test
-sudo docker-compose run test
+sudo docker-compose run --name=test -v <your_path_to_application>/test_reports/:/usr/src/myapp/test_reports test
+
 ```
-To get report file .html after tests:
-```cassandraql
-sudo docker-compose run -d test
-container_id=$(sudo docker ps -qf "name=shopper_test")
-sudo docker cp "$container_id":/usr/src/myapp/report.html test-reports/report.html
-```
+Run test will generate report.html to app directory /test_reports
+
 
 ### CI/CD process
 - commit and push to Git repository

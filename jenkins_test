@@ -2,4 +2,4 @@
 sudo docker system prune -f
 
 sudo docker-compose build test
-sudo docker-compose run --name=test -v ~/workspace/shopper/test_git addreports/:/usr/src/myapp/test_reports test
+sudo docker-compose run --name=test -v ./test_reports/:/usr/src/myapp/test_reports test

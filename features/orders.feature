@@ -31,6 +31,6 @@ Feature: User can work with cart
     Then User is able to submit order
 
   Scenario: Delete order
-    When User is finding order with ID 200
+    When User is finding order with ID 2
     And User deletes order with ID 2
     Then Order with ID 2 is deleted

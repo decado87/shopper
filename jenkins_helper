@@ -1,9 +1,3 @@
 #!/bin/bash
-docker-compose run -d test
-<<<<<<< HEAD
-CONTAINER_ID=docker ps -qf "name=shopper_test"
-docker cp ${CONTAINER_ID}:/usr/src/myapp/report.html test-reports/reports.html
-=======
-container_id=$(docker ps -qf "name=shopper_test")
-docker cp "$container_id":/usr/src/myapp/report.html test-reports/report.html
->>>>>>> fda1205... read me and clean up Gemfile
+udo docker-compose build db test
+sudo docker-compose run --name=test -v ~/workspace/shopper/test_reports/:/usr/src/myapp/test_reports test

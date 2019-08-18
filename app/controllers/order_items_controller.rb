@@ -18,6 +18,8 @@ class OrderItemsController < ApplicationController
       msg = "removed 1 product"
     when 1
       msg = "added 1 product"
+    when 0
+      msg = "not added product"
     else
       msg = "added #{quantity} products"
     end
